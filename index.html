@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-ocean">
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>Focusify</h1>
+            <button id="settings-btn" class="icon-btn" aria-label="Settings">⚙️</button>
+        </header>
+
+        <!-- Mode Selector -->
+        <div class="modes">
+            <button id="mode-pomodoro" class="mode-btn active" data-mode="pomodoro">Pomodoro</button>
+            <button id="mode-short" class="mode-btn" data-mode="shortBreak">Short Break</button>
+            <button id="mode-long" class="mode-btn" data-mode="longBreak">Long Break</button>
+        </div>
+
+        <!-- Timer Area -->
+        <div class="timer-display-container">
+            <svg class="progress-ring" width="300" height="300">
+                <circle class="progress-ring__circle-bg" cx="150" cy="150" r="135"></circle>
+                <circle class="progress-ring__circle" cx="150" cy="150" r="135"></circle>
+            </svg>
+            <div class="timer-values">
+                <span id="time-left">25:00</span>
+                <span id="session-label">Focus Time</span>
+                <span id="round-label">Round 1/4</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="start-btn" class="primary-btn">Start</button>
+            <button id="pause-btn" class="secondary-btn" disabled>Pause</button>
+            <button id="reset-btn" class="secondary-btn">Reset</button>
+            <button id="skip-btn" class="secondary-btn">Skip</button>
+        </div>
+
+        <!-- Statistics Widget -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <span class="stat-value" id="stat-pomodoros">0</span>
+                <span class="stat-label">Pomodoros</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-focus-time">0m</span>
+                <span class="stat-label">Focus Today</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-streaks">0</span>
+                <span class="stat-label">Streak</span>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn" id="close-settings">&times;</span>
+                <h2>Settings</h2>
+                
+                <div class="setting-group">
+                    <label for="pomodoro-input">Pomodoro (min):</label>
+                    <input type="number" id="pomodoro-input" min="1" max="60" value="25">
+                </div>
+                <div class="setting-group">
+                    <label for="short-break-input">Short Break (min):</label>
+                    <input type="number" id="short-break-input" min="1" max="30" value="5">
+                </div>
+                <div class="setting-group">
+                    <label for="long-break-input">Long Break (min):</label>
+                    <input type="number" id="long-break-input" min="1" max="60" value="15">
+                </div>
+                
+                <div class="setting-group checkbox-group">
+                    <label for="auto-start-toggle">Auto-start next timer:</label>
+                    <input type="checkbox" id="auto-start-toggle" checked>
+                </div>
+
+                <div class="setting-group">
+                    <label for="theme-select">Theme:</label>
+                    <select id="theme-select">
+                        <option value="theme-ocean">🌊 Ocean</option>
+                        <option value="theme-forest">🌲 Forest</option>
+                        <option value="theme-light">☀️ Light</option>
+                        <option value="theme-dark">🌙 Dark</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
